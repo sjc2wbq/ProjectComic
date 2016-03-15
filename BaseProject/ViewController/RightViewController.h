@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+//菜单栏
 @interface RightViewController : UIViewController
 
 @end

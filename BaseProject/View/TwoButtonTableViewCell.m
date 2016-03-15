@@ -54,4 +54,38 @@
     }
     return _rightButton;
 }
+
+
+
+
+- (UIImageView *)headIcon {
+    if(_headIcon == nil) {
+        _headIcon = [[UIImageView alloc] init];
+        [_headIcon.layer setCornerRadius:40];
+        [_headIcon.layer setMasksToBounds:YES];
+        [self.contentView addSubview:_headIcon];
+        [_headIcon mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(5);
+            make.top.equalTo(5);
+            make.height.equalTo(80);
+            make.width.equalTo(80);
+        }];
+    }
+    return _headIcon;
+}
+
+- (UILabel *)oneWord {
+    if(_oneWord == nil) {
+        _oneWord = [[UILabel alloc] init];
+        _oneWord.numberOfLines = 0;
+        _oneWord.lineBreakMode = NSLineBreakByCharWrapping;
+        [self.contentView addSubview:_oneWord];
+        [_oneWord mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.headIcon.mas_centerY);
+            make.left.equalTo(self.headIcon.mas_right).equalTo(10);
+            make.right.equalTo(-5);
+        }];
+    }
+    return _oneWord;
+}
 @end

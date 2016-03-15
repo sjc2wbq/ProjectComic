@@ -11,6 +11,8 @@
 @interface TwoButtonTableViewCell : UITableViewCell
 @property(nonatomic) UIButton *leftButton;
 @property(nonatomic) UIButton *rightButton;
+@property(nonatomic) UIImageView *headIcon;
+@property(nonatomic) UILabel *oneWord;
 
 
 @end

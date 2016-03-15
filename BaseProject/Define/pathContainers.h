@@ -31,4 +31,7 @@
 /** 新番页*/
 #define kComicNew @"http://api.puacg.com/data/new.json"
 
+
+
+#define kOneWordPath @"http://api.hitokoto.us/rand"
 #endif /* pathContainers_h */

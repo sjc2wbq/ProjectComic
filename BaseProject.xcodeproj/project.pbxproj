@@ -33,6 +33,8 @@
 		5CA7115B1C940A1B00F46580 /* ComicsBestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA7115A1C940A1B00F46580 /* ComicsBestModel.m */; };
 		5CA7115E1C940B0900F46580 /* ComicsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA7115D1C940B0900F46580 /* ComicsViewModel.m */; };
 		5CAF775E1C924B4B00B3BF30 /* OneWordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF775D1C924B4B00B3BF30 /* OneWordTableViewCell.m */; };
+		5CC58B011C96DC180069E0C5 /* ShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC58B001C96DC180069E0C5 /* ShowViewController.m */; };
+		5CC58B041C96E5A90069E0C5 /* PicturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC58B031C96E5A90069E0C5 /* PicturesViewController.m */; };
 		5CDBD4751C8FF7EC00F3B79F /* CarToonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDBD4741C8FF7EC00F3B79F /* CarToonModel.m */; };
 		5CDBD4781C8FF94A00F3B79F /* OneCarToonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDBD4771C8FF94A00F3B79F /* OneCarToonModel.m */; };
 		5CDBD47C1C8FFACD00F3B79F /* CarToonNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDBD47B1C8FFACD00F3B79F /* CarToonNetManager.m */; };
@@ -94,6 +96,10 @@
 		5CA7115D1C940B0900F46580 /* ComicsViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComicsViewModel.m; sourceTree = "<group>"; };
 		5CAF775C1C924B4B00B3BF30 /* OneWordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneWordTableViewCell.h; sourceTree = "<group>"; };
 		5CAF775D1C924B4B00B3BF30 /* OneWordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneWordTableViewCell.m; sourceTree = "<group>"; };
+		5CC58AFF1C96DC180069E0C5 /* ShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowViewController.h; sourceTree = "<group>"; };
+		5CC58B001C96DC180069E0C5 /* ShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowViewController.m; sourceTree = "<group>"; };
+		5CC58B021C96E5A90069E0C5 /* PicturesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesViewController.h; sourceTree = "<group>"; };
+		5CC58B031C96E5A90069E0C5 /* PicturesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesViewController.m; sourceTree = "<group>"; };
 		5CDBD4731C8FF7EC00F3B79F /* CarToonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarToonModel.h; sourceTree = "<group>"; };
 		5CDBD4741C8FF7EC00F3B79F /* CarToonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarToonModel.m; sourceTree = "<group>"; };
 		5CDBD4761C8FF94A00F3B79F /* OneCarToonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneCarToonModel.h; sourceTree = "<group>"; };
@@ -239,6 +245,10 @@
 				5C97B6F61C91948300709F6E /* RightViewController.m */,
 				5C97B6F81C91949800709F6E /* ContentViewController.h */,
 				5C97B6F91C91949800709F6E /* ContentViewController.m */,
+				5CC58AFF1C96DC180069E0C5 /* ShowViewController.h */,
+				5CC58B001C96DC180069E0C5 /* ShowViewController.m */,
+				5CC58B021C96E5A90069E0C5 /* PicturesViewController.h */,
+				5CC58B031C96E5A90069E0C5 /* PicturesViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -489,6 +499,7 @@
 				5C4990E31C852BD300DCFD83 /* ViewController.m in Sources */,
 				5C4A62F11C857C6F0051D060 /* Factory.m in Sources */,
 				5C4990E91C852D2100DCFD83 /* NSObject+AFNetworking.m in Sources */,
+				5CC58B041C96E5A90069E0C5 /* PicturesViewController.m in Sources */,
 				5CDBD48A1C90456800F3B79F /* ComicNetManager.m in Sources */,
 				5CDBD4781C8FF94A00F3B79F /* OneCarToonModel.m in Sources */,
 				5CA7115B1C940A1B00F46580 /* ComicsBestModel.m in Sources */,
@@ -496,6 +507,7 @@
 				5CF1A8841C93B1900092653C /* CategoriesCollectionViewCell.m in Sources */,
 				5C4AF8791C92915400882CB0 /* listenTableViewCell.m in Sources */,
 				5C4AF8A71C92A64D00882CB0 /* CarToonViewModel.m in Sources */,
+				5CC58B011C96DC180069E0C5 /* ShowViewController.m in Sources */,
 				5CAF775E1C924B4B00B3BF30 /* OneWordTableViewCell.m in Sources */,
 				5C625D3B1C851DAF00AD3047 /* main.m in Sources */,
 			);

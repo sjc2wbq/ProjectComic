@@ -33,7 +33,7 @@
 -(void)getDataWithType:(picType)type RequestMode:(RequestMode)requestMode completionHanle:(void (^)(NSError *))completionHandle{
     
     NSInteger start = arc4random()%8+1;
-    NSInteger count = start + 5;
+    NSInteger count = 5;
     switch (type) {
         case picTop: {
             NSString *path = [NSString stringWithFormat:kTopCarTooPath,start,count];

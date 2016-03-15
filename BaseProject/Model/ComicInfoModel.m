@@ -25,6 +25,7 @@
 @implementation ComicInfoDataItemsModel
 +(NSDictionary *)replaceKeyFromPropertyName{
     return @{@"ID":@"id"};
+    
 }
 @end
 

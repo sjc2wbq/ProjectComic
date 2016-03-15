@@ -13,6 +13,10 @@
 #import "CarToonViewModel.h"
 #import "CategoriesCollectionViewCell.h"
 #import "ComicsViewModel.h"
+#import "NSObject+AFNetworking.h"
+#import "ShowViewController.h"
+#import "PicturesViewController.h"
+
 @interface ContentViewController()<UITableViewDelegate,UITableViewDataSource,iCarouselDelegate,iCarouselDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,CategorieTableViewDelegate>
 @property(nonatomic) UITableView *tableView;
 @property(nonatomic) iCarousel *headerCarousel;
@@ -38,6 +42,8 @@
 #pragma mark - UIcollectionView Delegate
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (collectionView == self.bestCollectionView) {
+        PicturesViewController *vc = [PicturesViewController new];
+        [self.navigationController pushViewController:vc animated:YES];
         NSLog(@"best:%ld",indexPath.row);
     }
     if (collectionView == self.allCateColletionView) {
@@ -91,6 +97,14 @@
     return 10;
 }
 #pragma mark - 头部滚动页ICarousel Delegate
+-(void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
+    ShowViewController *showVc = [ShowViewController new];
+    for (int i = 0; i<5; i++) {
+        [showVc.picArr addObject:[MWPhoto photoWithURL:[self.carToonTopVV onePicImg:i]]];
+    }
+    [showVc setCurrentPhotoIndex:index];//设置图片展示的当前图片
+    [self.navigationController pushViewController:showVc animated:YES];
+}
 -(void)carouselCurrentItemIndexDidChange:(iCarousel *)carousel{
     _pageControl.currentPage = carousel.currentItemIndex;
 }
@@ -112,6 +126,7 @@
     img.contentMode = UIViewContentModeScaleAspectFill;
     img.clipsToBounds = YES;
     [img setImageWithURL:[self.carToonTopVV onePicImg:index]];
+    //NSLog(@"icarousal");
     return view;
 }
 -(CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value{
@@ -175,8 +190,16 @@
 
     if (indexPath.row == 0) {
         TwoButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"two" forIndexPath:indexPath];
-        [cell.leftButton setTitle:@"一言" forState:UIControlStateNormal];
-        [cell.rightButton setTitle:@"一图" forState:UIControlStateNormal];
+        cell.headIcon.image = [UIImage imageNamed:@"hitokoto"];
+        static NSString *title = @"嗯嗯，说点什么呢";
+        [NSTimer bk_scheduledTimerWithTimeInterval:10 block:^(NSTimer *timer) {
+            [NSObject GET:kOneWordPath parameters:nil progress:nil completionHandler:^(id responseObj, NSError *error) {
+                NSDictionary *dic = responseObj;
+                title  = dic[@"hitokoto"];
+            }];
+            cell.oneWord.text = title;
+        } repeats:YES];
+        cell.oneWord.text = title;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }

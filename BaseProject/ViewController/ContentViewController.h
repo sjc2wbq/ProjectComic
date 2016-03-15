@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+//主页面controller
 @interface ContentViewController : UIViewController
 +(ContentViewController *)shareContenVC;
 @property(nonatomic) UINavigationController *navi;
