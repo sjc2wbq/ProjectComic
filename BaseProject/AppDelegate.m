@@ -19,12 +19,6 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//   [CarToonNetManager getDataWithPath:@"https://myhloli.com/picture/acgart-pic/" completionHandler:^(id model, NSError *error) {
-//       
-//   }];
-//    [CarToonNetManager getDataWithPath:kCarToonPath completionHandler:^(id model, NSError *error) {
-//        NSLog(@"");
-//    }];
     [self setupGlobalConfig];
     RESideMenu *menu = [[RESideMenu alloc]initWithContentViewController:[ContentViewController shareContenVC].navi leftMenuViewController:nil rightMenuViewController:[RightViewController new]];
     self.window.rootViewController = menu;
@@ -32,6 +26,7 @@
     //menu.scaleBackgroundImageView = NO;
     menu.scaleContentView = NO;
     menu.contentViewInPortraitOffsetCenterX = kScreenW/2;
+    [[UINavigationBar appearance]setBarTintColor:[UIColor whiteColor]];
     return YES;
 }
 

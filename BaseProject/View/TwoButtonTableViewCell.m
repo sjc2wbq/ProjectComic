@@ -63,6 +63,7 @@
         _headIcon = [[UIImageView alloc] init];
         [_headIcon.layer setCornerRadius:40];
         [_headIcon.layer setMasksToBounds:YES];
+//        _headIcon.layer addAnimation:<#(nonnull CAAnimation *)#> forKey:<#(nullable NSString *)#>
         [self.contentView addSubview:_headIcon];
         [_headIcon mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(5);
@@ -79,6 +80,7 @@
         _oneWord = [[UILabel alloc] init];
         _oneWord.numberOfLines = 0;
         _oneWord.lineBreakMode = NSLineBreakByCharWrapping;
+        [_oneWord sizeToFit];
         [self.contentView addSubview:_oneWord];
         [_oneWord mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.headIcon.mas_centerY);
@@ -88,4 +90,6 @@
     }
     return _oneWord;
 }
+
+
 @end

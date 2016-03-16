@@ -50,24 +50,36 @@
             [self getDataWithRequestMode:requestMode andPath:path completionHandler:completionHandle];
             break;
         }
-        case picOther: {
-            
+        case picOneCategory: {
+            [self getOneCategoryPicWithRequestMode:requestMode completionHandler:completionHandle];
             break;
         }
     }
 }
-
+-(void)getOneCategoryPicWithRequestMode:(RequestMode)mode completionHandler:(void(^)(NSError *error))completionHandler {
+    static int start = 0;
+    static int pageNum = 12;
+    switch (mode) {
+        case RequestModeRefresh: {
+            start = 0;
+            break;
+        }
+        case RequestModeMore: {
+            start ++;
+            break;
+        }
+    }
+    self.dataTask = [CarToonNetManager getOneCarToonWithAlbumID:self.oneCategoryID start:start*pageNum count:pageNum completionHandler:^(id model, NSError *error) {
+        if (!error) {
+            if (mode == RequestModeRefresh) {
+                [self.picArr removeAllObjects];
+            }
+            [self.picArr addObjectsFromArray:model];
+        }
+        completionHandler(error);
+    }];
+}
 -(void)getDataWithRequestMode:(RequestMode)mode andPath:(NSString *)path completionHandler:(void(^)(NSError *error))completionHandler {
-//    switch (mode) {
-//        case RequestModeRefresh: {
-//       
-//            break;
-//        }
-//        case RequestModeMore: {
-//            
-//            break;
-//        }
-//    }
     self.dataTask = [CarToonNetManager getDataWithPath:path completionHandler:^(id model, NSError *error) {
         self.picArr = model;
         completionHandler(error);
@@ -100,4 +112,14 @@
     return [self OneCarToomModel:row].hits;
     
 }
+-(NSString *)ID:(NSInteger)row{
+    return [self OneCarToomModel:row].ID;
+}
+- (NSMutableArray *)picArr {
+    if(_picArr == nil) {
+        _picArr = [[NSMutableArray alloc] init];
+    }
+    return _picArr;
+}
+
 @end

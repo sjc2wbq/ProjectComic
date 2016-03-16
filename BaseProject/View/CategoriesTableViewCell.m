@@ -42,6 +42,7 @@
     if(_leftButton == nil) {
         _leftButton = [[UIButton alloc] init];
         _leftButton.backgroundColor = [UIColor orangeColor];
+        [_leftButton addTarget:self.delegate action:@selector(categoryButton:) forControlEvents:UIControlEventTouchUpInside];
 //        [_leftButton.layer setMasksToBounds:YES];
 //        [_leftButton.layer setCornerRadius:2];
         [self.bgViwe addSubview:_leftButton];

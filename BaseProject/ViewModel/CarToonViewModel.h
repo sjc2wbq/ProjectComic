@@ -16,12 +16,14 @@ typedef NS_ENUM(NSUInteger, picType) {
     picTop,
     picGirl,
     picScene,
-    picOther
+    picOneCategory
 };
 @interface CarToonViewModel : NSObject
 @property(nonatomic) NSArray *categoriseArr;
-//头部展示图片数组
-@property(nonatomic) NSArray *picArr;
+//图片数组
+@property(nonatomic) NSMutableArray *oneCategoryArr;
+@property(nonatomic) NSString *oneCategoryID;
+@property(nonatomic) NSMutableArray *picArr;
 @property(nonatomic) NSInteger categoriesNum;
 @property(nonatomic) NSInteger picNum;
 //所有分类的信息
@@ -37,5 +39,6 @@ typedef NS_ENUM(NSUInteger, picType) {
 -(NSString *)heightImg:(NSInteger)row;
 -(NSString *)widthImg:(NSInteger)row;
 -(NSString *)hits:(NSInteger)row;
+-(NSString *)ID:(NSInteger)row;
 
 @end

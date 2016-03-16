@@ -40,13 +40,7 @@
     self.customImageSelectedIconName = @"ImageSelected.png";
     self.customImageSelectedSmallIconName = @"ImageSelectedSmall.png";
     
-    // Optionally set the current visible photo before displaying
-//    [self setCurrentPhotoIndex:1];
-    
-    // Present
-    //[self.navigationController pushViewController:browser animated:YES];
-    
-    // Manipulate
+
     [self showNextPhotoAnimated:YES];
     [self showPreviousPhotoAnimated:YES];
 //    [self setCurrentPhotoIndex:10];
@@ -55,9 +49,7 @@
 
 
 - (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser{
-    self.picArr;
     return self.picArr.count;
-    //return [self.picVM picNum];
 }
 //2.每一个显示什么样式
 - (id<MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index{

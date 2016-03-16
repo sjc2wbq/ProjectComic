@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "CarToonViewModel.h"
 @interface PicturesViewController : UIViewController
+@property(nonatomic) CarToonViewModel *oneCatToonVV;
+
 
 @end

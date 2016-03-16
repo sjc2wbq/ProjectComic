@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C07063A1C9973350013D394 /* OneCategoryPicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0706391C9973350013D394 /* OneCategoryPicTableViewCell.m */; };
 		5C0CA3AF1C866FAC00B21599 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0CA3AE1C866FAC00B21599 /* BaseModel.m */; };
 		5C4990E31C852BD300DCFD83 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4990E11C852BD300DCFD83 /* ViewController.m */; };
 		5C4990E61C852D0D00DCFD83 /* NSObject+ViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4990E51C852D0D00DCFD83 /* NSObject+ViewModel.m */; };
@@ -28,13 +29,13 @@
 		5C625D471C851DAF00AD3047 /* BaseProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C625D451C851DAF00AD3047 /* BaseProject.xcdatamodeld */; };
 		5C625D491C851DAF00AD3047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C625D481C851DAF00AD3047 /* Assets.xcassets */; };
 		5C625D4C1C851DAF00AD3047 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C625D4A1C851DAF00AD3047 /* LaunchScreen.storyboard */; };
+		5C87A5F91C97D494004AD611 /* PicturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C87A5F81C97D494004AD611 /* PicturesViewController.m */; };
 		5C97B6F71C91948300709F6E /* RightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C97B6F61C91948300709F6E /* RightViewController.m */; };
 		5C97B6FA1C91949800709F6E /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C97B6F91C91949800709F6E /* ContentViewController.m */; };
 		5CA7115B1C940A1B00F46580 /* ComicsBestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA7115A1C940A1B00F46580 /* ComicsBestModel.m */; };
 		5CA7115E1C940B0900F46580 /* ComicsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA7115D1C940B0900F46580 /* ComicsViewModel.m */; };
 		5CAF775E1C924B4B00B3BF30 /* OneWordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF775D1C924B4B00B3BF30 /* OneWordTableViewCell.m */; };
 		5CC58B011C96DC180069E0C5 /* ShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC58B001C96DC180069E0C5 /* ShowViewController.m */; };
-		5CC58B041C96E5A90069E0C5 /* PicturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC58B031C96E5A90069E0C5 /* PicturesViewController.m */; };
 		5CDBD4751C8FF7EC00F3B79F /* CarToonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDBD4741C8FF7EC00F3B79F /* CarToonModel.m */; };
 		5CDBD4781C8FF94A00F3B79F /* OneCarToonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDBD4771C8FF94A00F3B79F /* OneCarToonModel.m */; };
 		5CDBD47C1C8FFACD00F3B79F /* CarToonNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDBD47B1C8FFACD00F3B79F /* CarToonNetManager.m */; };
@@ -48,6 +49,8 @@
 
 /* Begin PBXFileReference section */
 		2119D2F96F1CE5BE6FB057D9 /* Pods-BaseProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaseProject/Pods-BaseProject.release.xcconfig"; sourceTree = "<group>"; };
+		5C0706381C9973350013D394 /* OneCategoryPicTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneCategoryPicTableViewCell.h; sourceTree = "<group>"; };
+		5C0706391C9973350013D394 /* OneCategoryPicTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneCategoryPicTableViewCell.m; sourceTree = "<group>"; };
 		5C0B884E1C85927D00C756CE /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
 		5C0CA3AD1C866FAC00B21599 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		5C0CA3AE1C866FAC00B21599 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
@@ -86,6 +89,8 @@
 		5C625D481C851DAF00AD3047 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		5C625D4B1C851DAF00AD3047 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C625D4D1C851DAF00AD3047 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C87A5F71C97D494004AD611 /* PicturesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesViewController.h; sourceTree = "<group>"; };
+		5C87A5F81C97D494004AD611 /* PicturesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesViewController.m; sourceTree = "<group>"; };
 		5C97B6F51C91948300709F6E /* RightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightViewController.h; sourceTree = "<group>"; };
 		5C97B6F61C91948300709F6E /* RightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightViewController.m; sourceTree = "<group>"; };
 		5C97B6F81C91949800709F6E /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
@@ -98,8 +103,6 @@
 		5CAF775D1C924B4B00B3BF30 /* OneWordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneWordTableViewCell.m; sourceTree = "<group>"; };
 		5CC58AFF1C96DC180069E0C5 /* ShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowViewController.h; sourceTree = "<group>"; };
 		5CC58B001C96DC180069E0C5 /* ShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowViewController.m; sourceTree = "<group>"; };
-		5CC58B021C96E5A90069E0C5 /* PicturesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesViewController.h; sourceTree = "<group>"; };
-		5CC58B031C96E5A90069E0C5 /* PicturesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesViewController.m; sourceTree = "<group>"; };
 		5CDBD4731C8FF7EC00F3B79F /* CarToonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarToonModel.h; sourceTree = "<group>"; };
 		5CDBD4741C8FF7EC00F3B79F /* CarToonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarToonModel.m; sourceTree = "<group>"; };
 		5CDBD4761C8FF94A00F3B79F /* OneCarToonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneCarToonModel.h; sourceTree = "<group>"; };
@@ -133,13 +136,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5C0F32D61C93E308009DF198 /* collectionView */ = {
+		5C07063B1C997C6A0013D394 /* 单个种类壁纸tableviewCell */ = {
 			isa = PBXGroup;
 			children = (
-				5CF1A8821C93B1900092653C /* CategoriesCollectionViewCell.h */,
-				5CF1A8831C93B1900092653C /* CategoriesCollectionViewCell.m */,
+				5C0706381C9973350013D394 /* OneCategoryPicTableViewCell.h */,
+				5C0706391C9973350013D394 /* OneCategoryPicTableViewCell.m */,
 			);
-			name = collectionView;
+			name = "单个种类壁纸tableviewCell";
+			sourceTree = "<group>";
+		};
+		5C07063C1C997C9F0013D394 /* 所有壁纸分类colleviewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "所有壁纸分类colleviewCell";
+			sourceTree = "<group>";
+		};
+		5C0F32D61C93E308009DF198 /* 首页table底部大Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5CAF775C1C924B4B00B3BF30 /* OneWordTableViewCell.h */,
+				5CAF775D1C924B4B00B3BF30 /* OneWordTableViewCell.m */,
+			);
+			name = "首页table底部大Cell";
 			sourceTree = "<group>";
 		};
 		5C4990D71C852BD300DCFD83 /* Category */ = {
@@ -222,13 +241,12 @@
 		5C4990DE1C852BD300DCFD83 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5C0F32D61C93E308009DF198 /* collectionView */,
-				5CAF775C1C924B4B00B3BF30 /* OneWordTableViewCell.h */,
-				5CAF775D1C924B4B00B3BF30 /* OneWordTableViewCell.m */,
-				5C4AF8711C92568C00882CB0 /* TwoButtonTableViewCell.h */,
-				5C4AF8721C92568C00882CB0 /* TwoButtonTableViewCell.m */,
-				5C4AF8741C9256E200882CB0 /* CategoriesTableViewCell.h */,
-				5C4AF8751C9256E200882CB0 /* CategoriesTableViewCell.m */,
+				5C07063C1C997C9F0013D394 /* 所有壁纸分类colleviewCell */,
+				5C07063B1C997C6A0013D394 /* 单个种类壁纸tableviewCell */,
+				5C87A5F11C97AE3E004AD611 /* 首页table分类Cell */,
+				5C87A5F01C97ADA2004AD611 /* 首页table带滑动选项cell */,
+				5C87A5EF1C97AD37004AD611 /* 首页tablecell中的collectionview精选Cell */,
+				5C0F32D61C93E308009DF198 /* 首页table底部大Cell */,
 				5C4AF8771C92915400882CB0 /* listenTableViewCell.h */,
 				5C4AF8781C92915400882CB0 /* listenTableViewCell.m */,
 			);
@@ -238,17 +256,13 @@
 		5C4990DF1C852BD300DCFD83 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				5C625D451C851DAF00AD3047 /* BaseProject.xcdatamodeld */,
+				5C87A5FA1C97D4AC004AD611 /* 壁纸图片显示 */,
+				5C87A5F61C97D0B8004AD611 /* 菜单页 */,
+				5C87A5F51C97D020004AD611 /* 单个图片展示 */,
+				5C87A5F41C97D00A004AD611 /* 主页面 */,
 				5C4990E01C852BD300DCFD83 /* ViewController.h */,
 				5C4990E11C852BD300DCFD83 /* ViewController.m */,
-				5C97B6F51C91948300709F6E /* RightViewController.h */,
-				5C97B6F61C91948300709F6E /* RightViewController.m */,
-				5C97B6F81C91949800709F6E /* ContentViewController.h */,
-				5C97B6F91C91949800709F6E /* ContentViewController.m */,
-				5CC58AFF1C96DC180069E0C5 /* ShowViewController.h */,
-				5CC58B001C96DC180069E0C5 /* ShowViewController.m */,
-				5CC58B021C96E5A90069E0C5 /* PicturesViewController.h */,
-				5CC58B031C96E5A90069E0C5 /* PicturesViewController.m */,
+				5C625D451C851DAF00AD3047 /* BaseProject.xcdatamodeld */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -256,10 +270,8 @@
 		5C4990E21C852BD300DCFD83 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				5C4AF8A51C92A64D00882CB0 /* CarToonViewModel.h */,
-				5C4AF8A61C92A64D00882CB0 /* CarToonViewModel.m */,
-				5CA7115C1C940B0900F46580 /* ComicsViewModel.h */,
-				5CA7115D1C940B0900F46580 /* ComicsViewModel.m */,
+				5C87A5FC1C97DE10004AD611 /* Comic */,
+				5C87A5FB1C97DE00004AD611 /* CarToon */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -310,6 +322,87 @@
 				5C4A62ED1C857A8B0051D060 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5C87A5EF1C97AD37004AD611 /* 首页tablecell中的collectionview精选Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5CF1A8821C93B1900092653C /* CategoriesCollectionViewCell.h */,
+				5CF1A8831C93B1900092653C /* CategoriesCollectionViewCell.m */,
+			);
+			name = "首页tablecell中的collectionview精选Cell";
+			sourceTree = "<group>";
+		};
+		5C87A5F01C97ADA2004AD611 /* 首页table带滑动选项cell */ = {
+			isa = PBXGroup;
+			children = (
+				5C4AF8741C9256E200882CB0 /* CategoriesTableViewCell.h */,
+				5C4AF8751C9256E200882CB0 /* CategoriesTableViewCell.m */,
+			);
+			name = "首页table带滑动选项cell";
+			sourceTree = "<group>";
+		};
+		5C87A5F11C97AE3E004AD611 /* 首页table分类Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5C4AF8711C92568C00882CB0 /* TwoButtonTableViewCell.h */,
+				5C4AF8721C92568C00882CB0 /* TwoButtonTableViewCell.m */,
+			);
+			name = "首页table分类Cell";
+			sourceTree = "<group>";
+		};
+		5C87A5F41C97D00A004AD611 /* 主页面 */ = {
+			isa = PBXGroup;
+			children = (
+				5C97B6F81C91949800709F6E /* ContentViewController.h */,
+				5C97B6F91C91949800709F6E /* ContentViewController.m */,
+			);
+			name = "主页面";
+			sourceTree = "<group>";
+		};
+		5C87A5F51C97D020004AD611 /* 单个图片展示 */ = {
+			isa = PBXGroup;
+			children = (
+				5CC58AFF1C96DC180069E0C5 /* ShowViewController.h */,
+				5CC58B001C96DC180069E0C5 /* ShowViewController.m */,
+			);
+			name = "单个图片展示";
+			sourceTree = "<group>";
+		};
+		5C87A5F61C97D0B8004AD611 /* 菜单页 */ = {
+			isa = PBXGroup;
+			children = (
+				5C97B6F51C91948300709F6E /* RightViewController.h */,
+				5C97B6F61C91948300709F6E /* RightViewController.m */,
+			);
+			name = "菜单页";
+			sourceTree = "<group>";
+		};
+		5C87A5FA1C97D4AC004AD611 /* 壁纸图片显示 */ = {
+			isa = PBXGroup;
+			children = (
+				5C87A5F71C97D494004AD611 /* PicturesViewController.h */,
+				5C87A5F81C97D494004AD611 /* PicturesViewController.m */,
+			);
+			name = "壁纸图片显示";
+			sourceTree = "<group>";
+		};
+		5C87A5FB1C97DE00004AD611 /* CarToon */ = {
+			isa = PBXGroup;
+			children = (
+				5C4AF8A51C92A64D00882CB0 /* CarToonViewModel.h */,
+				5C4AF8A61C92A64D00882CB0 /* CarToonViewModel.m */,
+			);
+			name = CarToon;
+			sourceTree = "<group>";
+		};
+		5C87A5FC1C97DE10004AD611 /* Comic */ = {
+			isa = PBXGroup;
+			children = (
+				5CA7115C1C940B0900F46580 /* ComicsViewModel.h */,
+				5CA7115D1C940B0900F46580 /* ComicsViewModel.m */,
+			);
+			name = Comic;
 			sourceTree = "<group>";
 		};
 		5CDBD4861C9041FE00F3B79F /* Comic */ = {
@@ -499,9 +592,10 @@
 				5C4990E31C852BD300DCFD83 /* ViewController.m in Sources */,
 				5C4A62F11C857C6F0051D060 /* Factory.m in Sources */,
 				5C4990E91C852D2100DCFD83 /* NSObject+AFNetworking.m in Sources */,
-				5CC58B041C96E5A90069E0C5 /* PicturesViewController.m in Sources */,
+				5C87A5F91C97D494004AD611 /* PicturesViewController.m in Sources */,
 				5CDBD48A1C90456800F3B79F /* ComicNetManager.m in Sources */,
 				5CDBD4781C8FF94A00F3B79F /* OneCarToonModel.m in Sources */,
+				5C07063A1C9973350013D394 /* OneCategoryPicTableViewCell.m in Sources */,
 				5CA7115B1C940A1B00F46580 /* ComicsBestModel.m in Sources */,
 				5CDBD4751C8FF7EC00F3B79F /* CarToonModel.m in Sources */,
 				5CF1A8841C93B1900092653C /* CategoriesCollectionViewCell.m in Sources */,

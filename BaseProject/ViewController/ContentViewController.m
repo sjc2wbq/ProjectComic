@@ -24,49 +24,47 @@
 @property(nonatomic) NSTimer *timer;
 @property(nonatomic) UICollectionViewFlowLayout *layout;
 @property(nonatomic) CarToonViewModel *carToonTopVV;
-
 @property(nonatomic) NSMutableArray *bestImgArr;
 @property(nonatomic) NSMutableArray *allCategoriesArr;
 @property(nonatomic) UICollectionView *bestCollectionView;
 @property(nonatomic) UICollectionView *allCateColletionView;
-
-
 @property(nonatomic) ComicsViewModel *comicsBestVV;
+@property(nonatomic) NSArray *oneWordArr;
 @end
 @implementation ContentViewController
-//-(void)collectionViewGetDataArr:(NSMutableArray *)data Ifcoll:(UICollectionView *)coll isEqualtoColl:(UICollectionView *)anthorColl{
-//    if (coll == anthorColl) {
-//        anthorColl
-//    }
-//}
 #pragma mark - UIcollectionView Delegate
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (collectionView == self.bestCollectionView) {
+        CarToonModel *cartoon = self.bestImgArr[indexPath.row];
         PicturesViewController *vc = [PicturesViewController new];
+        vc.oneCatToonVV.oneCategoryID = cartoon.ID;
         [self.navigationController pushViewController:vc animated:YES];
         NSLog(@"best:%ld",indexPath.row);
     }
     if (collectionView == self.allCateColletionView) {
-        NSLog(@"all:%ld",indexPath.row);
+        CarToonModel *cartoon = self.allCategoriesArr[indexPath.row];
+        PicturesViewController *vc = [PicturesViewController new];
+        vc.oneCatToonVV.oneCategoryID = cartoon.ID;
+        [self.navigationController pushViewController:vc animated:YES];        NSLog(@"all:%ld",indexPath.row);
     }
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.bestImgArr.count;
 }
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-
     if (collectionView == self.bestCollectionView) {
         CategoriesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CateCell" forIndexPath:indexPath];
         if (indexPath.row!=10&&indexPath.row>=0) {
+            if (self.bestImgArr.count == 0) {
+                cell.imgV.image = [UIImage imageNamed:@"hitokoto"];
+            }
             CarToonModel *cartoon = self.bestImgArr[indexPath.row];
             NSString *path =[kCarToonPicPath stringByAppendingString: cartoon.cover_url];
-            [cell.imgV setImageWithURL:[NSURL URLWithString:path]];
+            [cell.imgV setImageWithURL:[NSURL URLWithString:path]placeholderImage:[UIImage imageNamed:@"hitokoto"]];
             cell.label.text = cartoon.tags;
         }
         return cell;
-
     }
-  
     if (collectionView == self.allCateColletionView) {
         CategoriesCollectionViewCell *cellAll = [collectionView dequeueReusableCellWithReuseIdentifier:@"CateCell" forIndexPath:indexPath];
         if (indexPath.row!=10) {
@@ -75,9 +73,7 @@
             [cellAll.imgV setImageWithURL:[NSURL URLWithString:path]];
             cellAll.label.text = cartoon.tags;
         }
-
         return cellAll;
-
     }
     return nil;
 }
@@ -126,7 +122,6 @@
     img.contentMode = UIViewContentModeScaleAspectFill;
     img.clipsToBounds = YES;
     [img setImageWithURL:[self.carToonTopVV onePicImg:index]];
-    //NSLog(@"icarousal");
     return view;
 }
 -(CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value{
@@ -135,15 +130,12 @@
     }
     return value;
 }
-
-
 #pragma mark - 两个带有collectionview的cell的创建方法 Method
 -(CategoriesTableViewCell *)creatCellWithTitle:(NSString *)title andInfo:(NSString *)info ButtonTag:(NSInteger)tag{
     CategoriesTableViewCell *cell = [CategoriesTableViewCell new];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell.leftButton setTitle:title forState:UIControlStateNormal];
-    [cell.leftButton addTarget:self action:@selector(categoryButton:) forControlEvents:UIControlEventTouchUpInside];
-    cell.leftButton.tag =tag;
+    cell.leftButton.tag = tag;
     cell.bottomLb.text = info;
     cell.delegate = self;
     [self initAndRefreshColletionView:cell.collectionView];
@@ -174,31 +166,48 @@
 -(void)categoryButton:(UIButton *)button{
     if (button.tag == 500) {
         NSLog(@"精选");
-
     }
     if (button.tag == 600) {
         NSLog(@"所有");
-
     }
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //    TwoButtonTableViewCell *cell = [self.tableView viewWithTag:1000];
+    //    cell.contentView.backgroundColor = [UIColor redColor];
+    //    UIImageView *imgV = [cell.contentView viewWithTag:700];
+    //    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+    //    animation.duration = 20;
+    //    animation.repeatCount = MAXFLOAT;
+    //    animation.toValue = @(2*M_PI);
+    //    //动画完之后不移除
+    //    animation.removedOnCompletion = false;
+    //    [imgV.layer addAnimation:animation forKey:nil];
 }
 #pragma mark - UITableView Delegate
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self.comicsBestVV comicsBestNum]+3;
 }
-
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
     if (indexPath.row == 0) {
-        TwoButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"two" forIndexPath:indexPath];
+        //TwoButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"two" forIndexPath:indexPath];
+        TwoButtonTableViewCell *cell = [TwoButtonTableViewCell new];
         cell.headIcon.image = [UIImage imageNamed:@"hitokoto"];
+        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+        animation.duration = 20;
+        animation.repeatCount = MAXFLOAT;
+        animation.toValue = @(2*M_PI);
+        //动画完之后不移除
+        animation.removedOnCompletion = false;
+        [cell.headIcon.layer addAnimation:animation forKey:nil];
         static NSString *title = @"嗯嗯，说点什么呢";
-        [NSTimer bk_scheduledTimerWithTimeInterval:10 block:^(NSTimer *timer) {
-            [NSObject GET:kOneWordPath parameters:nil progress:nil completionHandler:^(id responseObj, NSError *error) {
-                NSDictionary *dic = responseObj;
-                title  = dic[@"hitokoto"];
-            }];
-            cell.oneWord.text = title;
-        } repeats:YES];
+        //        [NSTimer bk_scheduledTimerWithTimeInterval:10 block:^(NSTimer *timer) {
+        //            [NSObject GET:kOneWordPath parameters:nil progress:nil completionHandler:^(id responseObj, NSError *error) {
+        //                NSDictionary *dic = responseObj;
+        //                title  = dic[@"hitokoto"];
+        //            }];
+        //            cell.oneWord.text = title;
+        //        } repeats:YES];
         cell.oneWord.text = title;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
@@ -236,8 +245,6 @@
         [self.sideMenuViewController presentRightMenuViewController];
     }];
     self.navigationItem.rightBarButtonItem = item;
-    
-  
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -259,14 +266,10 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor grayColor];
-        _tableView.separatorInset = UIEdgeInsetsMake(25, 0, 25, 0);
         _tableView.separatorStyle = UITextAutocapitalizationTypeNone;
-        
-        _tableView.separatorColor = [UIColor redColor];
         [_tableView registerClass:[OneWordTableViewCell class] forCellReuseIdentifier:@"one"];
         [_tableView registerClass:[TwoButtonTableViewCell class] forCellReuseIdentifier:@"two"];
         [_tableView registerClass:[CategoriesTableViewCell class] forCellReuseIdentifier:@"category"];
-        
         [self.view addSubview:_tableView];
         [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(0);
@@ -275,41 +278,33 @@
     return _tableView;
 }
 
-- ( iCarousel *)headerCarousel {
+- (iCarousel *)headerCarousel {
     if(_headerCarousel == nil) {
-        _headerCarousel = [[ iCarousel alloc] initWithFrame:CGRectMake(0, 0, kScreenW, kScreenW*224/400)];
+        _headerCarousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 0, kScreenW, kScreenW*224/400)];
         _headerCarousel.delegate = self;
         _headerCarousel.dataSource = self;
         _headerCarousel.backgroundColor = kRGBA(245, 245, 245, 1);
         _headerCarousel.pagingEnabled = YES;
         _headerCarousel.stopAtItemBoundary = YES;
         _headerCarousel.scrollSpeed = 0.5;
-        
         _pageControl = [UIPageControl new];
         _pageControl.userInteractionEnabled = NO;
-        _pageControl.numberOfPages = 5;   //待定
-        //        _pageControl.pageIndicatorTintColor = [UIColor grayColor];
+        _pageControl.numberOfPages = 5;    //待定
         [_headerCarousel addSubview:_pageControl];
         [_pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(0);        //待定
+            make.centerX.equalTo(0);       //待定
             make.bottom.equalTo(2);        //待定
         }];
-        
         _timer = [NSTimer bk_scheduledTimerWithTimeInterval:3 block:^(NSTimer *timer) {
             [_headerCarousel scrollToItemAtIndex:_headerCarousel.currentItemIndex+1 animated:YES];
-            
         } repeats:YES];
-        
         [self.carToonTopVV getDataWithType:picTop RequestMode:RequestModeRefresh completionHanle:^(NSError *error) {
             if (!error) {
                 [_headerCarousel reloadData];
             }
         }];
-        [self.comicsBestVV getDataWithRequestMode:RequestModeRefresh completionHanle:^(NSError *error) {
-            //[self.tableView reloadData];
+        [self.comicsBestVV getDataWithRequestMode:RequestModeRefresh completionHanle:^(NSError *error){
         }];
-
-        
     }
     return _headerCarousel;
 }
@@ -317,7 +312,6 @@
 
 - (UICollectionViewFlowLayout *)layout {
     if(_layout == nil) {
-        
     }
     return _layout;
 }
@@ -330,18 +324,23 @@
 }
 
 - (NSMutableArray *)bestImgArr {
-	if(_bestImgArr == nil) {
-		_bestImgArr = [[NSMutableArray alloc] init];
-    
-	}
-	return _bestImgArr;
+    if(_bestImgArr == nil) {
+        _bestImgArr = [[NSMutableArray alloc] init];
+    }
+    return _bestImgArr;
 }
 
 - (ComicsViewModel *)comicsBestVV {
-	if(_comicsBestVV == nil) {
-		_comicsBestVV = [[ComicsViewModel alloc] init];
-	}
-	return _comicsBestVV;
+    if(_comicsBestVV == nil) {
+        _comicsBestVV = [[ComicsViewModel alloc] init];
+    }
+    return _comicsBestVV;
+}
+- (NSArray *)oneWordArr {
+    if(_oneWordArr == nil) {
+        _oneWordArr = [[NSArray alloc] init];
+    }
+    return _oneWordArr;
 }
 
 @end
