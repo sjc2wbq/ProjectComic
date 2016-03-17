@@ -96,7 +96,6 @@
 - (UICollectionViewFlowLayout *)layout {
     if(_layout == nil) {
         _layout = [[UICollectionViewFlowLayout alloc] init];
-        _layout = [[UICollectionViewFlowLayout alloc] init];
         _layout.minimumLineSpacing = 10;
         _layout.minimumInteritemSpacing = 0;
         _layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 0);

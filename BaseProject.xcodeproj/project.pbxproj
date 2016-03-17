@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5C07063A1C9973350013D394 /* OneCategoryPicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0706391C9973350013D394 /* OneCategoryPicTableViewCell.m */; };
+		5C0A40891C9B4DE200182911 /* AllCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0A40881C9B4DE200182911 /* AllCategoriesViewController.m */; };
+		5C0A408C1C9B60EB00182911 /* AllCategoriesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0A408B1C9B60EB00182911 /* AllCategoriesCollectionViewCell.m */; };
 		5C0CA3AF1C866FAC00B21599 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0CA3AE1C866FAC00B21599 /* BaseModel.m */; };
 		5C4990E31C852BD300DCFD83 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4990E11C852BD300DCFD83 /* ViewController.m */; };
 		5C4990E61C852D0D00DCFD83 /* NSObject+ViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4990E51C852D0D00DCFD83 /* NSObject+ViewModel.m */; };
@@ -21,7 +23,6 @@
 		5C4A62F11C857C6F0051D060 /* Factory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4A62F01C857C6F0051D060 /* Factory.m */; };
 		5C4AF8731C92568C00882CB0 /* TwoButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4AF8721C92568C00882CB0 /* TwoButtonTableViewCell.m */; };
 		5C4AF8761C9256E200882CB0 /* CategoriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4AF8751C9256E200882CB0 /* CategoriesTableViewCell.m */; };
-		5C4AF8791C92915400882CB0 /* listenTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4AF8781C92915400882CB0 /* listenTableViewCell.m */; };
 		5C4AF8A71C92A64D00882CB0 /* CarToonViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4AF8A61C92A64D00882CB0 /* CarToonViewModel.m */; };
 		5C625D3B1C851DAF00AD3047 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C625D3A1C851DAF00AD3047 /* main.m */; };
 		5C625D3E1C851DAF00AD3047 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C625D3D1C851DAF00AD3047 /* AppDelegate.m */; };
@@ -51,6 +52,10 @@
 		2119D2F96F1CE5BE6FB057D9 /* Pods-BaseProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaseProject/Pods-BaseProject.release.xcconfig"; sourceTree = "<group>"; };
 		5C0706381C9973350013D394 /* OneCategoryPicTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneCategoryPicTableViewCell.h; sourceTree = "<group>"; };
 		5C0706391C9973350013D394 /* OneCategoryPicTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneCategoryPicTableViewCell.m; sourceTree = "<group>"; };
+		5C0A40871C9B4DE200182911 /* AllCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllCategoriesViewController.h; sourceTree = "<group>"; };
+		5C0A40881C9B4DE200182911 /* AllCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllCategoriesViewController.m; sourceTree = "<group>"; };
+		5C0A408A1C9B60EB00182911 /* AllCategoriesCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllCategoriesCollectionViewCell.h; sourceTree = "<group>"; };
+		5C0A408B1C9B60EB00182911 /* AllCategoriesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllCategoriesCollectionViewCell.m; sourceTree = "<group>"; };
 		5C0B884E1C85927D00C756CE /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
 		5C0CA3AD1C866FAC00B21599 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		5C0CA3AE1C866FAC00B21599 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
@@ -76,8 +81,6 @@
 		5C4AF8721C92568C00882CB0 /* TwoButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoButtonTableViewCell.m; sourceTree = "<group>"; };
 		5C4AF8741C9256E200882CB0 /* CategoriesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesTableViewCell.h; sourceTree = "<group>"; };
 		5C4AF8751C9256E200882CB0 /* CategoriesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesTableViewCell.m; sourceTree = "<group>"; };
-		5C4AF8771C92915400882CB0 /* listenTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = listenTableViewCell.h; sourceTree = "<group>"; };
-		5C4AF8781C92915400882CB0 /* listenTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = listenTableViewCell.m; sourceTree = "<group>"; };
 		5C4AF8A51C92A64D00882CB0 /* CarToonViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarToonViewModel.h; sourceTree = "<group>"; };
 		5C4AF8A61C92A64D00882CB0 /* CarToonViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarToonViewModel.m; sourceTree = "<group>"; };
 		5C625D361C851DAF00AD3047 /* BaseProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +151,8 @@
 		5C07063C1C997C9F0013D394 /* 所有壁纸分类colleviewCell */ = {
 			isa = PBXGroup;
 			children = (
+				5C0A408A1C9B60EB00182911 /* AllCategoriesCollectionViewCell.h */,
+				5C0A408B1C9B60EB00182911 /* AllCategoriesCollectionViewCell.m */,
 			);
 			name = "所有壁纸分类colleviewCell";
 			sourceTree = "<group>";
@@ -247,8 +252,6 @@
 				5C87A5F01C97ADA2004AD611 /* 首页table带滑动选项cell */,
 				5C87A5EF1C97AD37004AD611 /* 首页tablecell中的collectionview精选Cell */,
 				5C0F32D61C93E308009DF198 /* 首页table底部大Cell */,
-				5C4AF8771C92915400882CB0 /* listenTableViewCell.h */,
-				5C4AF8781C92915400882CB0 /* listenTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -256,10 +259,12 @@
 		5C4990DF1C852BD300DCFD83 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				5C87A5FA1C97D4AC004AD611 /* 壁纸图片显示 */,
-				5C87A5F61C97D0B8004AD611 /* 菜单页 */,
-				5C87A5F51C97D020004AD611 /* 单个图片展示 */,
+				5C0A40871C9B4DE200182911 /* AllCategoriesViewController.h */,
+				5C0A40881C9B4DE200182911 /* AllCategoriesViewController.m */,
 				5C87A5F41C97D00A004AD611 /* 主页面 */,
+				5C87A5F61C97D0B8004AD611 /* 菜单页 */,
+				5C87A5FA1C97D4AC004AD611 /* 壁纸图片显示 */,
+				5C87A5F51C97D020004AD611 /* 单个图片展示 */,
 				5C4990E01C852BD300DCFD83 /* ViewController.h */,
 				5C4990E11C852BD300DCFD83 /* ViewController.m */,
 				5C625D451C851DAF00AD3047 /* BaseProject.xcdatamodeld */,
@@ -572,6 +577,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C0A408C1C9B60EB00182911 /* AllCategoriesCollectionViewCell.m in Sources */,
 				5C4AF8731C92568C00882CB0 /* TwoButtonTableViewCell.m in Sources */,
 				5C4990F21C852D7800DCFD83 /* UIView+HUD.m in Sources */,
 				5C625D3E1C851DAF00AD3047 /* AppDelegate.m in Sources */,
@@ -594,12 +600,12 @@
 				5C4990E91C852D2100DCFD83 /* NSObject+AFNetworking.m in Sources */,
 				5C87A5F91C97D494004AD611 /* PicturesViewController.m in Sources */,
 				5CDBD48A1C90456800F3B79F /* ComicNetManager.m in Sources */,
+				5C0A40891C9B4DE200182911 /* AllCategoriesViewController.m in Sources */,
 				5CDBD4781C8FF94A00F3B79F /* OneCarToonModel.m in Sources */,
 				5C07063A1C9973350013D394 /* OneCategoryPicTableViewCell.m in Sources */,
 				5CA7115B1C940A1B00F46580 /* ComicsBestModel.m in Sources */,
 				5CDBD4751C8FF7EC00F3B79F /* CarToonModel.m in Sources */,
 				5CF1A8841C93B1900092653C /* CategoriesCollectionViewCell.m in Sources */,
-				5C4AF8791C92915400882CB0 /* listenTableViewCell.m in Sources */,
 				5C4AF8A71C92A64D00882CB0 /* CarToonViewModel.m in Sources */,
 				5CC58B011C96DC180069E0C5 /* ShowViewController.m in Sources */,
 				5CAF775E1C924B4B00B3BF30 /* OneWordTableViewCell.m in Sources */,

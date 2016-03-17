@@ -16,69 +16,75 @@
 #import "NSObject+AFNetworking.h"
 #import "ShowViewController.h"
 #import "PicturesViewController.h"
-
+#import "AllCategoriesViewController.h"
 @interface ContentViewController()<UITableViewDelegate,UITableViewDataSource,iCarouselDelegate,iCarouselDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,CategorieTableViewDelegate>
 @property(nonatomic) UITableView *tableView;
-@property(nonatomic) iCarousel *headerCarousel;
-@property(nonatomic) UIPageControl *pageControl;
-@property(nonatomic) NSTimer *timer;
-@property(nonatomic) UICollectionViewFlowLayout *layout;
-@property(nonatomic) CarToonViewModel *carToonTopVV;
-@property(nonatomic) NSMutableArray *bestImgArr;
-@property(nonatomic) NSMutableArray *allCategoriesArr;
 @property(nonatomic) UICollectionView *bestCollectionView;
 @property(nonatomic) UICollectionView *allCateColletionView;
+@property(nonatomic) UIPageControl *pageControl;
+/**
+ *  头部展示iC
+ */
+@property(nonatomic) iCarousel *headerCarousel;
+/**
+ *  头部展示跳动时间
+ */
+@property(nonatomic) NSTimer *timer;
+/**
+ *  卡通壁纸ViewModel
+ */
+@property(nonatomic) CarToonViewModel *carToonTopVV;
+/**
+ *  tableview第一组colleview数组
+ */
+@property(nonatomic) NSMutableArray *bestImgArr;
+/**
+ *  tableview第二组colleview数组
+ */
+@property(nonatomic) NSMutableArray *allCategoriesArr;
+/**
+ *  动漫精选ViewModel（待取舍）
+ */
 @property(nonatomic) ComicsViewModel *comicsBestVV;
+/**
+ *  一言数组（待取舍）
+ */
 @property(nonatomic) NSArray *oneWordArr;
 @end
 @implementation ContentViewController
 #pragma mark - UIcollectionView Delegate
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    CarToonModel *cartoon = [CarToonModel new];
     if (collectionView == self.bestCollectionView) {
-        CarToonModel *cartoon = self.bestImgArr[indexPath.row];
-        PicturesViewController *vc = [PicturesViewController new];
-        vc.oneCatToonVV.oneCategoryID = cartoon.ID;
-        [self.navigationController pushViewController:vc animated:YES];
-        NSLog(@"best:%ld",indexPath.row);
+        cartoon = self.bestImgArr[indexPath.row];
     }
     if (collectionView == self.allCateColletionView) {
-        CarToonModel *cartoon = self.allCategoriesArr[indexPath.row];
-        PicturesViewController *vc = [PicturesViewController new];
-        vc.oneCatToonVV.oneCategoryID = cartoon.ID;
-        [self.navigationController pushViewController:vc animated:YES];        NSLog(@"all:%ld",indexPath.row);
+        cartoon = self.allCategoriesArr[indexPath.row];
     }
+    PicturesViewController *vc = [PicturesViewController new];
+    vc.oneCatToonVV.oneCategoryID = cartoon.ID;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.bestImgArr.count;
 }
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    CategoriesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CateCell" forIndexPath:indexPath];
+    CarToonModel *cartoon = [CarToonModel new];
     if (collectionView == self.bestCollectionView) {
-        CategoriesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CateCell" forIndexPath:indexPath];
-        if (indexPath.row!=10&&indexPath.row>=0) {
-            if (self.bestImgArr.count == 0) {
-                cell.imgV.image = [UIImage imageNamed:@"hitokoto"];
-            }
-            CarToonModel *cartoon = self.bestImgArr[indexPath.row];
-            NSString *path =[kCarToonPicPath stringByAppendingString: cartoon.cover_url];
-            [cell.imgV setImageWithURL:[NSURL URLWithString:path]placeholderImage:[UIImage imageNamed:@"hitokoto"]];
-            cell.label.text = cartoon.tags;
-        }
-        return cell;
+        cartoon = self.bestImgArr[indexPath.row];
     }
     if (collectionView == self.allCateColletionView) {
-        CategoriesCollectionViewCell *cellAll = [collectionView dequeueReusableCellWithReuseIdentifier:@"CateCell" forIndexPath:indexPath];
-        if (indexPath.row!=10) {
-            CarToonModel *cartoon = self.allCategoriesArr[indexPath.row];
-            NSString *path =[kCarToonPicPath stringByAppendingString: cartoon.cover_url];
-            [cellAll.imgV setImageWithURL:[NSURL URLWithString:path]];
-            cellAll.label.text = cartoon.tags;
-        }
-        return cellAll;
+        cartoon = self.allCategoriesArr[indexPath.row];
     }
-    return nil;
+    if (indexPath.row!=10) {
+        NSString *path =[kCarToonPicPath stringByAppendingString: cartoon.cover_url];
+        [cell.imgV setImageWithURL:[NSURL URLWithString:path]];
+        //cell.label.text = cartoon.tags;
+    }
+    return cell;
 }
 #pragma mark - UIcollectionViewlayout返回collectionview的排版，大小，间距等 Delegate
-
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 10) {
         return CGSizeMake(kCategoryHeight/4, kCategoryHeight);
@@ -88,7 +94,6 @@
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     return UIEdgeInsetsMake(0, 10, 0, 0);
 }
-
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
     return 10;
 }
@@ -169,20 +174,13 @@
     }
     if (button.tag == 600) {
         NSLog(@"所有");
+        AllCategoriesViewController *vc = [AllCategoriesViewController new];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    //    TwoButtonTableViewCell *cell = [self.tableView viewWithTag:1000];
-    //    cell.contentView.backgroundColor = [UIColor redColor];
-    //    UIImageView *imgV = [cell.contentView viewWithTag:700];
-    //    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-    //    animation.duration = 20;
-    //    animation.repeatCount = MAXFLOAT;
-    //    animation.toValue = @(2*M_PI);
-    //    //动画完之后不移除
-    //    animation.removedOnCompletion = false;
-    //    [imgV.layer addAnimation:animation forKey:nil];
+    
 }
 #pragma mark - UITableView Delegate
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -190,16 +188,15 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        //TwoButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"two" forIndexPath:indexPath];
         TwoButtonTableViewCell *cell = [TwoButtonTableViewCell new];
-        cell.headIcon.image = [UIImage imageNamed:@"hitokoto"];
-        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-        animation.duration = 20;
-        animation.repeatCount = MAXFLOAT;
-        animation.toValue = @(2*M_PI);
-        //动画完之后不移除
-        animation.removedOnCompletion = false;
-        [cell.headIcon.layer addAnimation:animation forKey:nil];
+//        cell.headIcon.image = [UIImage imageNamed:@"hitokoto"];
+//        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+//        animation.duration = 20;
+//        animation.repeatCount = MAXFLOAT;
+//        animation.toValue = @(2*M_PI);
+//        //动画完之后不移除
+//        animation.removedOnCompletion = false;
+//        [cell.headIcon.layer addAnimation:animation forKey:nil];
         static NSString *title = @"嗯嗯，说点什么呢";
         //        [NSTimer bk_scheduledTimerWithTimeInterval:10 block:^(NSTimer *timer) {
         //            [NSObject GET:kOneWordPath parameters:nil progress:nil completionHandler:^(id responseObj, NSError *error) {
@@ -208,7 +205,9 @@
         //            }];
         //            cell.oneWord.text = title;
         //        } repeats:YES];
-        cell.oneWord.text = title;
+//        cell.oneWord.text = title;
+        [cell.leftButton setTitle:@"一言" forState:UIControlStateNormal];
+        [cell.rightButton setTitle:@"番剧资讯" forState:UIControlStateNormal];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
@@ -235,7 +234,6 @@
     }
     return 230;
 }
-
 #pragma mark - 生命周期 LifeCircle
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -265,7 +263,7 @@
         _tableView = [[UITableView alloc] init];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.backgroundColor = [UIColor grayColor];
+        _tableView.backgroundColor = [UIColor orangeColor];
         _tableView.separatorStyle = UITextAutocapitalizationTypeNone;
         [_tableView registerClass:[OneWordTableViewCell class] forCellReuseIdentifier:@"one"];
         [_tableView registerClass:[TwoButtonTableViewCell class] forCellReuseIdentifier:@"two"];
@@ -277,7 +275,6 @@
     }
     return _tableView;
 }
-
 - (iCarousel *)headerCarousel {
     if(_headerCarousel == nil) {
         _headerCarousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 0, kScreenW, kScreenW*224/400)];
@@ -303,17 +300,10 @@
                 [_headerCarousel reloadData];
             }
         }];
-        [self.comicsBestVV getDataWithRequestMode:RequestModeRefresh completionHanle:^(NSError *error){
-        }];
+//        [self.comicsBestVV getDataWithRequestMode:RequestModeRefresh completionHanle:^(NSError *error){
+//        }];
     }
     return _headerCarousel;
-}
-
-
-- (UICollectionViewFlowLayout *)layout {
-    if(_layout == nil) {
-    }
-    return _layout;
 }
 
 - (CarToonViewModel *)carToonTopVV {
@@ -322,14 +312,12 @@
     }
     return _carToonTopVV;
 }
-
 - (NSMutableArray *)bestImgArr {
     if(_bestImgArr == nil) {
         _bestImgArr = [[NSMutableArray alloc] init];
     }
     return _bestImgArr;
 }
-
 - (ComicsViewModel *)comicsBestVV {
     if(_comicsBestVV == nil) {
         _comicsBestVV = [[ComicsViewModel alloc] init];
@@ -342,5 +330,4 @@
     }
     return _oneWordArr;
 }
-
 @end

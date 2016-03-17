@@ -30,8 +30,6 @@
     NSString *path = [NSString stringWithFormat:kOneCarToonPath,ID,start,count];
     NSLog(@"path:%@",path);
     return [self GET:path parameters:nil progress:nil completionHandler:^(id responseObj, NSError *error) {
-       
-
         completionHandler([OneCarToonModel parse:responseObj],error);
     }];
 }

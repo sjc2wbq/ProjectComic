@@ -9,20 +9,25 @@
 #import "CarToonViewModel.h"
 
 @implementation CarToonViewModel
+-(NSInteger)categoriesNum{
+    return self.categoriseArr.count;
+}
+-(CarToonModel *)categoryCartoonModel:(NSInteger)row{
+    return self.categoriseArr[row];
+}
 -(NSURL *)categoryImg:(NSInteger)row{
-    return nil;
-    
+    NSString *partPath = [self categoryCartoonModel:row].cover_url;
+    NSString *imgPath = [kCarToonPicPath stringByAppendingString:partPath];
+    return [NSURL URLWithString:imgPath];
 }
 -(NSString *)categoryTitle:(NSInteger)row{
-    return nil;
-    
+    return [self categoryCartoonModel:row].tags;
 }
 -(NSString *)photoNum:(NSInteger)row{
-    return nil;
-    
+    return [self categoryCartoonModel:row].photos_num;
 }
 -(NSString *)categoryId:(NSInteger)row{
-    return nil;
+    return [self categoryCartoonModel:row].ID;
 }
 -(void)getAllCategoriesCompletionHandler:(void(^)(NSError *error))completionHandler{
     self.dataTask = [CarToonNetManager getAllCarToonsCompletionHandler:^(id model, NSError *error) {

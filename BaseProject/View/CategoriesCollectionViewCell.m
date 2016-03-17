@@ -46,7 +46,7 @@
 }
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        [self label];
+        //[self label];
         [self imgV];
     }
     return self;
