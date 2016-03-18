@@ -157,6 +157,15 @@
 			name = "所有壁纸分类colleviewCell";
 			sourceTree = "<group>";
 		};
+		5C0A408D1C9B7AA600182911 /* 壁纸所有分类页面 */ = {
+			isa = PBXGroup;
+			children = (
+				5C0A40871C9B4DE200182911 /* AllCategoriesViewController.h */,
+				5C0A40881C9B4DE200182911 /* AllCategoriesViewController.m */,
+			);
+			name = "壁纸所有分类页面";
+			sourceTree = "<group>";
+		};
 		5C0F32D61C93E308009DF198 /* 首页table底部大Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,8 +268,7 @@
 		5C4990DF1C852BD300DCFD83 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				5C0A40871C9B4DE200182911 /* AllCategoriesViewController.h */,
-				5C0A40881C9B4DE200182911 /* AllCategoriesViewController.m */,
+				5C0A408D1C9B7AA600182911 /* 壁纸所有分类页面 */,
 				5C87A5F41C97D00A004AD611 /* 主页面 */,
 				5C87A5F61C97D0B8004AD611 /* 菜单页 */,
 				5C87A5FA1C97D4AC004AD611 /* 壁纸图片显示 */,

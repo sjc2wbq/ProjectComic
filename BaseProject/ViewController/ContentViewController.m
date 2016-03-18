@@ -17,7 +17,7 @@
 #import "ShowViewController.h"
 #import "PicturesViewController.h"
 #import "AllCategoriesViewController.h"
-@interface ContentViewController()<UITableViewDelegate,UITableViewDataSource,iCarouselDelegate,iCarouselDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,CategorieTableViewDelegate>
+@interface ContentViewController()<UITableViewDelegate,UITableViewDataSource,iCarouselDelegate,iCarouselDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,CategorieTableViewDelegate,TwoButtonTableViewCellDelegate>
 @property(nonatomic) UITableView *tableView;
 @property(nonatomic) UICollectionView *bestCollectionView;
 @property(nonatomic) UICollectionView *allCateColletionView;
@@ -168,6 +168,12 @@
     }
 }
 #pragma mark - CategorieTableView Delegate
+-(void)leftButton:(UIButton *)clickIn{
+    NSLog(@"leftButton");
+}
+-(void)rightButton:(UIButton *)clickIn{
+    NSLog(@"rightButton");
+}
 -(void)categoryButton:(UIButton *)button{
     if (button.tag == 500) {
         NSLog(@"精选");
@@ -189,14 +195,14 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
         TwoButtonTableViewCell *cell = [TwoButtonTableViewCell new];
-//        cell.headIcon.image = [UIImage imageNamed:@"hitokoto"];
-//        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-//        animation.duration = 20;
-//        animation.repeatCount = MAXFLOAT;
-//        animation.toValue = @(2*M_PI);
-//        //动画完之后不移除
-//        animation.removedOnCompletion = false;
-//        [cell.headIcon.layer addAnimation:animation forKey:nil];
+        //        cell.headIcon.image = [UIImage imageNamed:@"hitokoto"];
+        //        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+        //        animation.duration = 20;
+        //        animation.repeatCount = MAXFLOAT;
+        //        animation.toValue = @(2*M_PI);
+        //        //动画完之后不移除
+        //        animation.removedOnCompletion = false;
+        //        [cell.headIcon.layer addAnimation:animation forKey:nil];
         static NSString *title = @"嗯嗯，说点什么呢";
         //        [NSTimer bk_scheduledTimerWithTimeInterval:10 block:^(NSTimer *timer) {
         //            [NSObject GET:kOneWordPath parameters:nil progress:nil completionHandler:^(id responseObj, NSError *error) {
@@ -205,7 +211,7 @@
         //            }];
         //            cell.oneWord.text = title;
         //        } repeats:YES];
-//        cell.oneWord.text = title;
+        //        cell.oneWord.text = title;
         [cell.leftButton setTitle:@"一言" forState:UIControlStateNormal];
         [cell.rightButton setTitle:@"番剧资讯" forState:UIControlStateNormal];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -300,8 +306,8 @@
                 [_headerCarousel reloadData];
             }
         }];
-//        [self.comicsBestVV getDataWithRequestMode:RequestModeRefresh completionHanle:^(NSError *error){
-//        }];
+        //        [self.comicsBestVV getDataWithRequestMode:RequestModeRefresh completionHanle:^(NSError *error){
+        //        }];
     }
     return _headerCarousel;
 }

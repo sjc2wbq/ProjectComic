@@ -30,6 +30,7 @@
     if(_leftButton == nil) {
         _leftButton = [[UIButton alloc] init];
         _leftButton.backgroundColor = [UIColor greenColor];
+        [_leftButton addTarget:self.delegate action:@selector(leftButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_leftButton];
         [_leftButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.equalTo(80);
@@ -44,6 +45,7 @@
     if(_rightButton == nil) {
         _rightButton = [[UIButton alloc] init];
         _rightButton.backgroundColor = [UIColor purpleColor];
+        [_rightButton addTarget:self.delegate action:@selector(rightButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_rightButton];
         [_rightButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(0);

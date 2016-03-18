@@ -29,7 +29,6 @@
 }
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     AllCategoriesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    
     [cell.iconImgV setImageWithURL:[self.allCatoonsVV categoryImg:indexPath.row]];
     cell.label.text = [self.allCatoonsVV photoNum:indexPath.row];
     return cell;
