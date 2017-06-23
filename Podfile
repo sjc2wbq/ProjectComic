@@ -13,7 +13,7 @@ target 'BaseProject' do
     pod 'BlocksKit'
     pod 'WMPageController'#头部多个controller标题栏
     pod 'CocoaLumberjack'#优秀的替换nslog的第三方框架，更加省资源，并且可以定义打印级别
-    pod 'MBProgressHUD'#实现安卓toast风格提示，弹出提示框架：如旋转的“菊花”
+    #pod 'MBProgressHUD'#实现安卓toast风格提示，弹出提示框架：如旋转的“菊花”
     pod 'TPKeyboardAvoiding'#当键盘弹出时自动把输入框textfield顶到键盘的上方
     pod 'MLTransition'#
     pod 'FMDB'#soqlite的oc封装

@@ -12,34 +12,7 @@
 
 //设置一个默认的全局使用的type，默认是普通拖返模式
 static MLTransitionGestureRecognizerType __MLTransitionGestureRecognizerType = MLTransitionGestureRecognizerTypePan;
-
-#pragma mark - hook大法
-//静态就交换静态，实例方法就交换实例方法
-void __MLTransition_Swizzle(Class c, SEL origSEL, SEL newSEL)
-{
-    //获取实例方法
-    Method origMethod = class_getInstanceMethod(c, origSEL);
-    Method newMethod = nil;
-	if (!origMethod) {
-        //获取静态方法
-		origMethod = class_getClassMethod(c, origSEL);
-        newMethod = class_getClassMethod(c, newSEL);
-    }else{
-        newMethod = class_getInstanceMethod(c, newSEL);
-    }
-    
-    if (!origMethod||!newMethod) {
-        return;
-    }
-    
-    //自身已经有了就添加不成功，直接交换即可
-    if(class_addMethod(c, origSEL, method_getImplementation(newMethod), method_getTypeEncoding(newMethod))){
-        //添加成功一般情况是因为，origSEL本身是在c的父类里。这里添加成功了一个继承方法。
-        class_replaceMethod(c, newSEL, method_getImplementation(origMethod), method_getTypeEncoding(origMethod));
-    }else{
-        method_exchangeImplementations(origMethod, newMethod);
-	}
-}
+static BOOL __MLTransitionEnabled = NO;
 
 @interface NSString (__MLTransition_Encrypt)
 
@@ -162,8 +135,6 @@ NSString * const kMLTransition_NavController_OfPan = @"__MLTransition_NavControl
  */
 @property (nonatomic, strong) UIPanGestureRecognizer *__MLTransition_panGestureRecognizer;
 
-- (void)__MLTransition_Hook_ViewDidLoad;
-
 @end
 
 #pragma mark - UINavigationController category implementation
@@ -185,14 +156,17 @@ NSString * const k__MLTransition_GestureRecognizer = @"__MLTransition_GestureRec
 }
 
 #pragma mark hook
-- (void)__MLTransition_Hook_ViewDidLoad
-{
-    [self __MLTransition_Hook_ViewDidLoad];
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    if (!__MLTransitionEnabled) {
+        return;
+    }
     
     //初始化拖返手势
     if (!self.__MLTransition_panGestureRecognizer&&[self.interactivePopGestureRecognizer.delegate isKindOfClass:[UIPercentDrivenInteractiveTransition class]]) {
         UIPanGestureRecognizer *gestureRecognizer = nil;
-
+        
 #define kHandleNavigationTransitionKey [@"nTShMTkyGzS2nJquqTyioyElLJ5mnKEco246" __mlDecryptString]
         if (__MLTransitionGestureRecognizerType == MLTransitionGestureRecognizerTypeScreenEdgePan) {
             gestureRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self.interactivePopGestureRecognizer.delegate action:NSSelectorFromString(kHandleNavigationTransitionKey)];
@@ -215,6 +189,10 @@ NSString * const k__MLTransition_GestureRecognizer = @"__MLTransition_GestureRec
 #pragma mark GestureRecognizer delegate
 - (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)recognizer
 {
+    if (!__MLTransitionEnabled) {
+        return NO;
+    }
+    
     UINavigationController *navVC = self;
     if ([navVC.transitionCoordinator isAnimated]||
         navVC.viewControllers.count < 2) {
@@ -269,21 +247,24 @@ NSString * const k__MLTransition_GestureRecognizer = @"__MLTransition_GestureRec
 
 @implementation MLTransition
 
-+ (void)validatePanPackWithMLTransitionGestureRecognizerType:(MLTransitionGestureRecognizerType)type
++ (void)validatePanBackWithMLTransitionGestureRecognizerType:(MLTransitionGestureRecognizerType)type
 {
     //IOS7以下不可用
     if ([[[UIDevice currentDevice] systemVersion]floatValue]<7.0) {
+        __MLTransitionEnabled = NO;
         return;
     }
     
-    //启用hook，自动对每个导航器开启拖返功能，整个程序的生命周期只允许执行一次
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        //设置记录type,并且执行hook
-        __MLTransitionGestureRecognizerType = type;
+    //设置记录type
+    __MLTransitionGestureRecognizerType = type;
         
-        __MLTransition_Swizzle([UINavigationController class],@selector(viewDidLoad),@selector(__MLTransition_Hook_ViewDidLoad));
-    });
+    //打开开关
+    __MLTransitionEnabled = YES;
+}
+
++ (void)invalidate {
+    //关闭开关
+    __MLTransitionEnabled = NO;
 }
 
 @end
@@ -299,18 +280,37 @@ NSString * const k__MLTransition_GestureRecognizer = @"__MLTransition_GestureRec
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRequireFailureOfGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
     if ([gestureRecognizer isEqual:self.panGestureRecognizer]) {
-        //如果此scrollView有横向滚动的可能当然就需要忽略了。
-        if (CGAffineTransformEqualToTransform(CGAffineTransformMakeRotation(-M_PI*0.5),self.transform)||CGAffineTransformEqualToTransform(CGAffineTransformMakeRotation(M_PI*0.5),self.transform)) {
-//            if (self.contentSize.height>self.frame.size.width) {
-            //暂时对于这一种比较喜欢直接就不支持拖返吧，感觉体验好点。
-                return NO;
-//            }
-        }else{
-            if (self.contentSize.width>self.frame.size.width) {
-                return NO;
-            }
-        }
         if (otherGestureRecognizer.__MLTransition_NavController) {
+            if ([otherGestureRecognizer isMemberOfClass:[UIPanGestureRecognizer class]]) {
+                CGPoint location = [otherGestureRecognizer locationInView:otherGestureRecognizer.view];
+                if (location.x<=10.0f) { //中间拖返模式 时拖返手势的左边界10.0f内的位置需要无条件支持拖返（无论scrollView是横向还是竖向）
+                    return YES;
+                }
+                
+                //判断scrollView是否横向
+                BOOL(^isHorizontalBlock)(UIScrollView *) = ^(UIScrollView *scrollView){
+                    if (CGAffineTransformEqualToTransform(CGAffineTransformMakeRotation(-M_PI*0.5),scrollView.transform)||CGAffineTransformEqualToTransform(CGAffineTransformMakeRotation(M_PI*0.5),scrollView.transform)) {
+                        return YES;
+                    }else{
+                        if (scrollView.contentSize.width>scrollView.frame.size.width) {
+                            return YES;
+                        }
+                    }
+                    return NO;
+                };
+                
+                //如果此scrollView或者其某个上级view也是scrollView的时候，有一个是横向的，那就需要暂时禁用中间拖返手势，防止冲突
+                UIView *superview = self;
+//                while (superview&&![superview isKindOfClass:NSClassFromString(@"UINavigationTransitionView")]) {
+                while (superview&&![superview isEqual:otherGestureRecognizer.__MLTransition_NavController.view]) {
+                    if ([superview isKindOfClass:[UIScrollView class]]) {
+                        if (isHorizontalBlock((UIScrollView*)superview)) {
+                            return NO;
+                        }
+                    }
+                    superview = superview.superview;
+                }
+            }
             //说明这玩意是我们的手势
             return YES;
         }

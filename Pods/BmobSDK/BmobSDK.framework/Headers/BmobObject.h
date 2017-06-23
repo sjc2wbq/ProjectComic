@@ -54,6 +54,7 @@
 +(instancetype )objectWithClassName:(NSString*)className;
 
 
+
 /**
  *  创建一个带有className 和objectId的BmobObject对象
  *
@@ -62,7 +63,7 @@
  *
  *  @return BmobObject对象
  */
-+(instancetype)objectWithoutDatatWithClassName:(NSString*)className objectId:(NSString *)objectId;
++(instancetype)objectWithoutDataWithClassName:(NSString*)className objectId:(NSString *)objectId;
 
 /**
  *	通过对象名称（类似数据库表名）初始化BmobObject对象
@@ -245,5 +246,6 @@
 
 - (BOOL)isEqual:(BmobObject*)object;
 - (NSString*)description;
+
 
 @end
