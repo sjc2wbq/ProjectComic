@@ -16,8 +16,6 @@
 @end
 
 @implementation AppDelegate
-
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self setupGlobalConfig];
     RESideMenu *menu = [[RESideMenu alloc]initWithContentViewController:[ContentViewController shareContenVC].navi leftMenuViewController:nil rightMenuViewController:[RightViewController new]];
